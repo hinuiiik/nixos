@@ -11,6 +11,10 @@
     tree
     htop
     sbctl
+	kdePackages.dolphin
+	kdePackages.ark
+	unzip
+#	steam
   ];
 
 #  programs.fish.enable = true;
@@ -18,4 +22,7 @@
   services.devmon.enable = true;
   services.gvfs.enable = true;
   services.udisks2.enable = true; 
+	programs.steam = {
+  enable = true;
+};
 }

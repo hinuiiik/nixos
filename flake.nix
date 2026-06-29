@@ -7,6 +7,9 @@
       url = "github:youwen5/zen-browser-flake";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    dolphin-overlay = {
+      url = "github:rumboon/dolphin-overlay";
+    };
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -28,19 +31,21 @@
     };
 
     vscode-server = {
-		url = "github:nix-community/nixos-vscode-server";
-		inputs.nixpkgs.follows = "nixpkgs";	
+      url = "github:nix-community/nixos-vscode-server";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
     noctalia = {
       url = "github:noctalia-dev/noctalia";
-#      inputs.nixpkgs.follows = "nixpkgs";
+      #      inputs.nixpkgs.follows = "nixpkgs";
     };
 
   };
-nixConfig = {
-  extra-substituters = [ "https://noctalia.cachix.org" ];
-  extra-trusted-public-keys = [ "noctalia.cachix.org-1:pCOR47nnMEo5thcxNDtzWpOxNFQsBRglJzxWPp3dkU4=" ];
-};
+  nixConfig = {
+    extra-substituters = [ "https://noctalia.cachix.org" ];
+    extra-trusted-public-keys = [
+      "noctalia.cachix.org-1:pCOR47nnMEo5thcxNDtzWpOxNFQsBRglJzxWPp3dkU4="
+    ];
+  };
   outputs =
     {
       self,
@@ -48,12 +53,14 @@ nixConfig = {
       home-manager,
       agenix,
       lanzaboote,
+      dolphin-overlay,
       ...
     }@inputs:
     {
       nixosConfigurations.nixos = nixpkgs.lib.nixosSystem {
         specialArgs = { inherit inputs; };
         modules = [
+          { nixpkgs.overlays = [ dolphin-overlay.overlays.default ]; }
           ./hosts/vm/configuration.nix
           agenix.nixosModules.default
           lanzaboote.nixosModules.lanzaboote

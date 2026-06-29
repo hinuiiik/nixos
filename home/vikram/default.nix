@@ -25,7 +25,7 @@ in
 	pkgs.pokemon-colorscripts
     inputs.zen-browser.packages.${pkgs.stdenv.hostPlatform.system}.default
     pkgs.kdePackages.kate
-    pkgs.kdePackages.dolphin
+    #pkgs.kdePackages.dolphin
     pkgs.qt6.qtsvg
     pkgs.qt6.qtimageformats
     pkgs.kdePackages.qtmultimedia
@@ -40,7 +40,21 @@ in
 	pkgs.kdePackages.qt6ct
 
 	pkgs.digital
+	pkgs.rambox
  ];
 
   #xdg.configFile."hypr".source = config.lib.file.mkOutOfStoreSymlink "${dotfiles}/hypr";
+
+	xdg.desktopEntries.digital = {
+    categories= ["Education" "Electronics"];
+    comment="Easy-to-use digital logic designer and circuit simulator";
+    exec="env GDK_DPI_SCALE=1.25 digital -Dsun.java2d.uiScale=1.25";
+    icon="digital";
+    # keywords=["simulator" "digital" "circuits"];
+   # mimeType="text/x-digital";
+    name="Digital";
+    terminal=false;
+    type="Application";
+    # version="1.5";
+  };
 }
