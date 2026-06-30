@@ -26,11 +26,12 @@ in
     inputs.zen-browser.packages.${pkgs.stdenv.hostPlatform.system}.default
     pkgs.kdePackages.kate
     #pkgs.kdePackages.dolphin
-    pkgs.qt6.qtsvg
+#    pkgs.qt6.qtsvg
     pkgs.qt6.qtimageformats
     pkgs.kdePackages.qtmultimedia
     pkgs.qt6.qt5compat
     pkgs.hicolor-icon-theme
+	pkgs.localsend
     pkgs.kdePackages.breeze-icons
     pkgs.nwg-displays
 	pkgs.vesktop
@@ -41,8 +42,11 @@ in
 
 	pkgs.digital
 	pkgs.rambox
+	pkgs.vscode
+	pkgs.mpvpaper
+	pkgs.onlyoffice-desktopeditors
  ];
-
+services.hyprpolkitagent.enable = true;
   #xdg.configFile."hypr".source = config.lib.file.mkOutOfStoreSymlink "${dotfiles}/hypr";
 
 	xdg.desktopEntries.digital = {
