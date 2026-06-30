@@ -77,6 +77,7 @@
       nixosConfigurations.laptop = nixpkgs.lib.nixosSystem {
         specialArgs = { inherit inputs; };
         modules = [
+          { nixpkgs.overlays = [ dolphin-overlay.overlays.default ]; }
           ./hosts/laptop/configuration.nix
           agenix.nixosModules.default
           lanzaboote.nixosModules.lanzaboote
