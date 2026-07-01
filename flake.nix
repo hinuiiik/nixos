@@ -8,7 +8,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     dolphin-overlay = {
-      url = "github:rumboon/dolphin-overlay";
+      url = "github:MattiDragon/dolphin-overlay";
     };
     home-manager = {
       url = "github:nix-community/home-manager";

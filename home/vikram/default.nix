@@ -45,6 +45,7 @@ in
 	pkgs.vscode
 	pkgs.mpvpaper
 	pkgs.onlyoffice-desktopeditors
+	pkgs.moonlight-qt
  ];
 services.hyprpolkitagent.enable = true;
   #xdg.configFile."hypr".source = config.lib.file.mkOutOfStoreSymlink "${dotfiles}/hypr";

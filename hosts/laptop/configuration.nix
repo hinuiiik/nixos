@@ -2,19 +2,24 @@
 # your system. Help is available in the configuration.nix(5) man page, on
 # https://search.nixos.org/options and in the NixOS manual (`nixos-help`).
 
-{ config, lib, pkgs, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}:
 
 {
-  imports =
-    [ # Include the results of the hardware scan.
-      ./hardware-configuration.nix
-      ../../modules/boot.nix
+  imports = [
+    # Include the results of the hardware scan.
+    ./hardware-configuration.nix
+    ../../modules/boot.nix
     ../../modules/security/agenix.nix
     ../../modules/fonts.nix
     ../../modules/packages.nix
     ../../modules/users.nix
-    ../../modules/desktop/hyprland.nix   
-    ];
+    ../../modules/desktop/hyprland.nix
+  ];
 
   # Use the systemd-boot EFI boot loader.
   boot.loader.systemd-boot.enable = true;
@@ -57,6 +62,22 @@
   services.pipewire = {
     enable = true;
     pulse.enable = true;
+    wireplumber.extraConfig = {
+      "10-disable-suspend" = {
+        "monitor.alsa.rules" = [
+          {
+            matches = [ { "node.name" = "~alsa_output.*"; } ];
+            actions = [
+              {
+                update-props = {
+                  "session.suspend-timeout-seconds" = 0;
+                };
+              }
+            ];
+          }
+        ];
+      };
+    };
   };
 
   # Enable touchpad support (enabled default in most desktopManager).
@@ -85,8 +106,8 @@
     # require public key authentication for better security
     settings.PasswordAuthentication = false;
     settings.KbdInteractiveAuthentication = false;
-	
-};
+
+  };
 
   # Open ports in the firewall.
   # networking.firewall.allowedTCPPorts = [ ... ];
@@ -118,7 +139,7 @@
   # For more information, see `man configuration.nix` or https://nixos.org/manual/nixos/stable/options#opt-system.stateVersion .
   system.stateVersion = "26.05"; # Did you read the comment?
 
-nix.gc = {
+  nix.gc = {
     automatic = true;
     dates = "weekly";
     options = "--delete-older-than 7d";
@@ -129,14 +150,26 @@ nix.gc = {
     "flakes"
   ];
   hardware.bluetooth = {
-	enable=true;
-	powerOnBoot = true;};  
+    enable = true;
+    powerOnBoot = true;
+  };
 
-	services.power-profiles-daemon.enable = true;
-	services.upower.enable = true;
-	hardware.i2c.enable = true;
+  services.power-profiles-daemon.enable = true;
+  services.upower.enable = true;
+  hardware.i2c.enable = true;
 
-#	services.udisks2.enable = true;
-	nixpkgs.config.allowUnfree = true;
+  #	services.udisks2.enable = true;
+  nixpkgs.config.allowUnfree = true;
+  hardware.graphics = {
+    enable = true;
+	enable32Bit = true;
+    extraPackages = with pkgs; [
+      # your Open GL, Vulkan and VAAPI drivers
+      vpl-gpu-rt # for newer GPUs on NixOS &gt;24.05 or unstable
+      # onevpl-intel-gpu  # for newer GPUs on NixOS &lt;= 24.05
+      # Below was required for intel Arc GPU's
+      intel-media-driver
+      # intel-media-sdk   # for older GPUs
+    ];
+  };
 }
-
