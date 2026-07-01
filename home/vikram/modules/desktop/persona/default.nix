@@ -1,8 +1,7 @@
-{ config, pkgs, inputs, ... }:
+{ pkgs, inputs, config, ... }:
 let
   dotfiles = "/home/vikram/dotfiles";
 in
-
 {
   home.packages = [
     (import ./quickshell.nix { inherit pkgs inputs; })

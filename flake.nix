@@ -56,40 +56,37 @@
       dolphin-overlay,
       ...
     }@inputs:
+    let
+      mkSystem =
+        { hostModule, desktopProfile }:
+        nixpkgs.lib.nixosSystem {
+          specialArgs = { inherit inputs; };
+          modules = [
+            { nixpkgs.overlays = [ dolphin-overlay.overlays.default ]; }
+            hostModule
+            agenix.nixosModules.default
+            lanzaboote.nixosModules.lanzaboote
+            home-manager.nixosModules.home-manager
+            inputs.vscode-server.nixosModules.default
+            {
+              home-manager.useGlobalPkgs = true;
+              home-manager.useUserPackages = true;
+              home-manager.extraSpecialArgs = {
+                inherit inputs desktopProfile;
+              };
+              home-manager.users.vikram = import ./home/vikram;
+            }
+          ];
+        };
+    in
     {
-      nixosConfigurations.nixos = nixpkgs.lib.nixosSystem {
-        specialArgs = { inherit inputs; };
-        modules = [
-          { nixpkgs.overlays = [ dolphin-overlay.overlays.default ]; }
-          ./hosts/vm/configuration.nix
-          agenix.nixosModules.default
-          lanzaboote.nixosModules.lanzaboote
-          home-manager.nixosModules.home-manager
-          inputs.vscode-server.nixosModules.default
-          {
-            home-manager.useGlobalPkgs = true;
-            home-manager.useUserPackages = true;
-            home-manager.extraSpecialArgs = { inherit inputs; };
-            home-manager.users.vikram = import ./home/vikram;
-          }
-        ];
+      nixosConfigurations.vm = mkSystem {
+        hostModule = ./hosts/vm/configuration.nix;
+        desktopProfile = "persona";
       };
-      nixosConfigurations.laptop = nixpkgs.lib.nixosSystem {
-        specialArgs = { inherit inputs; };
-        modules = [
-          { nixpkgs.overlays = [ dolphin-overlay.overlays.default ]; }
-          ./hosts/laptop/configuration.nix
-          agenix.nixosModules.default
-          lanzaboote.nixosModules.lanzaboote
-          home-manager.nixosModules.home-manager
-          inputs.vscode-server.nixosModules.default
-          {
-            home-manager.useGlobalPkgs = true;
-            home-manager.useUserPackages = true;
-            home-manager.extraSpecialArgs = { inherit inputs; };
-            home-manager.users.vikram = import ./home/vikram;
-          }
-        ];
+      nixosConfigurations.laptop = mkSystem {
+        hostModule = ./hosts/laptop/configuration.nix;
+        desktopProfile = "noctalia";
       };
     };
 }

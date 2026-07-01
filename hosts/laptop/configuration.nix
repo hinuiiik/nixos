@@ -14,6 +14,7 @@
     # Include the results of the hardware scan.
     ./hardware-configuration.nix
     ../../modules/boot.nix
+    ../../modules/laptop/ac-power-profile.nix
     ../../modules/security/agenix.nix
     ../../modules/fonts.nix
     ../../modules/packages.nix

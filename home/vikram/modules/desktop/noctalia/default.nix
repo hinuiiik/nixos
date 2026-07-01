@@ -1,18 +1,17 @@
 { pkgs, inputs, config, ... }:
 let
   dotfiles = "/home/vikram/dotfiles";
-in 
+in
 {
-    imports = [
-      inputs.noctalia.homeModules.default
-#	./env.nix
-    ];
+  imports = [
+    inputs.noctalia.homeModules.default
+  ];
 
-    xdg.configFile."hypr".source =
-      config.lib.file.mkOutOfStoreSymlink "${dotfiles}/hyprland/noctalia/hypr";
+  xdg.configFile."hypr".source =
+    config.lib.file.mkOutOfStoreSymlink "${dotfiles}/hyprland/noctalia/hypr";
 
-    xdg.configFile."noctalia".source =
-    	    config.lib.file.mkOutOfStoreSymlink "${dotfiles}/hyprland/noctalia/noctalia";
+  xdg.configFile."noctalia".source =
+    config.lib.file.mkOutOfStoreSymlink "${dotfiles}/hyprland/noctalia/noctalia";
 
 	xdg.dataFile."wallpapers".source =
 	    config.lib.file.mkOutOfStoreSymlink "${dotfiles}/hyprland/noctalia/wallpapers";
@@ -28,8 +27,8 @@ in
 	      # };
     };
      gtk = {
-    	enable = true;
-    	theme = {
+	    enable = true;
+	    theme = {
       name = "adw-gtk3-dark";
       package = pkgs.adw-gtk3;
     };
