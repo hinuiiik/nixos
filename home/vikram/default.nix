@@ -15,6 +15,7 @@ in
     ./modules/packages/qt.nix
     ./modules/packages/media.nix
     ./modules/packages/work.nix
+    ./modules/packages/steam-run.nix
     desktopModule
   ];
   home.username = "vikram";
