@@ -11,7 +11,7 @@ let
   #   "/etc/nixos"
   # ];
   repoRoot = 
-    if builtins.pathExists "/etc/nixos/home/vikram/.useHome" 
+    if builtins.pathExists ./.useHome
     then "${homeDir}/nixos" 
     else "/etc/nixos";
   dotfilesRoot = "${repoRoot}/home/vikram/dotfiles";
