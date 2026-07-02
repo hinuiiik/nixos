@@ -63,23 +63,10 @@
   services.pipewire = {
     enable = true;
     pulse.enable = true;
-    wireplumber.extraConfig = {
-      "10-disable-suspend" = {
-        "monitor.alsa.rules" = [
-          {
-            matches = [ { "node.name" = "~alsa_output.*"; } ];
-            actions = [
-              {
-                update-props = {
-                  "session.suspend-timeout-seconds" = 0;
-                };
-              }
-            ];
-          }
-        ];
-      };
-    };
-  };
+    alsa.enable = true;
+    alsa.support32Bit = true;  
+};
+
 
   # Enable touchpad support (enabled default in most desktopManager).
   services.libinput.enable = true;

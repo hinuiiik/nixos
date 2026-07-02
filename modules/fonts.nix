@@ -9,15 +9,7 @@
 		noto-fonts-cjk-sans
 		noto-fonts-color-emoji
 		iosevka
-		# (pkgs.stdenvNoCC.mkDerivation {
-		#       name = "custom-fonts";
-		# 
-		#       src = ../fonts;
-		# 
-		#       installPhase = ''
-		#         mkdir -p $out/share/fonts/opentype
-		#         cp *.otf $out/share/fonts/opentype/
-		#       '';
-		#     })
+		corefonts
+		vista-fonts
 	];
 }

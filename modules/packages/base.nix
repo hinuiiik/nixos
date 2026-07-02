@@ -12,5 +12,6 @@
     htop
     sbctl
     unzip
+    wineWow64Packages.waylandFull
   ];
 }
