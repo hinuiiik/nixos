@@ -6,14 +6,15 @@
 }:
 let
   homeDir = "/home/vikram";
-  # repoRoot = lib.findFirst builtins.pathExists "/etc/nixos" [
-  #   "${homeDir}/nixos"
-  #   "/etc/nixos"
-  # ];
+  # repoRoot = 
+  #   if builtins.pathExists ./.useHome
+  #   then "${homeDir}/nixos" 
+  #   else "/etc/nixos";
+  useHOME = true;
   repoRoot = 
-    if builtins.pathExists ./.useHome
-    then "${homeDir}/nixos" 
-    else "/etc/nixos";
+      if useHOME
+      then "${homeDir}/nixos" 
+      else "/etc/nixos";
   dotfilesRoot = "${repoRoot}/home/vikram/dotfiles";
   desktopModule = if desktopProfile == "persona" then ./modules/desktop/persona else ./modules/desktop/noctalia;
 in
