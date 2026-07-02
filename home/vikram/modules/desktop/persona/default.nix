@@ -1,7 +1,4 @@
-{ pkgs, inputs, config, ... }:
-let
-  dotfiles = "/home/vikram/dotfiles";
-in
+{ pkgs, inputs, config, dotfilesRoot, ... }:
 {
   home.packages = [
     (import ./quickshell.nix { inherit pkgs inputs; })
@@ -12,9 +9,9 @@ in
   };
 
   xdg.configFile."hypr".source =
-    config.lib.file.mkOutOfStoreSymlink "${dotfiles}/hyprland/persona/hypr";
+    config.lib.file.mkOutOfStoreSymlink "${dotfilesRoot}/hyprland/persona/hypr";
   xdg.configFile."quickshell".source =
-    config.lib.file.mkOutOfStoreSymlink "${dotfiles}/hyprland/persona/quickshell";
+    config.lib.file.mkOutOfStoreSymlink "${dotfilesRoot}/hyprland/persona/quickshell";
   home.file.".local/share/applications/org.quickshell.desktop".text = ''
     [Desktop Entry]
     Name=Quickshell

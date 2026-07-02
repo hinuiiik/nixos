@@ -1,0 +1,6 @@
+include themes/noctalia.conf
+
+
+shell fish
+font_size 15
+

@@ -1,23 +1,20 @@
-{ pkgs, inputs, config, ... }:
-let
-  dotfiles = "/home/vikram/dotfiles";
-in
+{ pkgs, inputs, config, dotfilesRoot, ... }:
 {
   imports = [
     inputs.noctalia.homeModules.default
   ];
 
   xdg.configFile."hypr".source =
-    config.lib.file.mkOutOfStoreSymlink "${dotfiles}/hyprland/noctalia/hypr";
+    config.lib.file.mkOutOfStoreSymlink "${dotfilesRoot}/hyprland/noctalia/hypr";
 
   xdg.configFile."noctalia".source =
-    config.lib.file.mkOutOfStoreSymlink "${dotfiles}/hyprland/noctalia/noctalia";
+    config.lib.file.mkOutOfStoreSymlink "${dotfilesRoot}/hyprland/noctalia/noctalia";
 
 	xdg.dataFile."wallpapers".source =
-	    config.lib.file.mkOutOfStoreSymlink "${dotfiles}/hyprland/noctalia/wallpapers";
+	    config.lib.file.mkOutOfStoreSymlink "${dotfilesRoot}/hyprland/noctalia/wallpapers";
 
 	xdg.dataFile."icons/macOS-hypr".source =
-            config.lib.file.mkOutOfStoreSymlink "${dotfiles}/macOS-hypr";
+            config.lib.file.mkOutOfStoreSymlink "${dotfilesRoot}/macOS-hypr";
 
 	programs.noctalia = {
 	      enable = true;

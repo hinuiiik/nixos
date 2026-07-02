@@ -1,12 +1,23 @@
 {
+  lib,
   inputs,
   desktopProfile ? "noctalia",
   ...
 }:
 let
+  homeDir = "/home/vikram";
+  repoRoot = lib.findFirst builtins.pathExists "/etc/nixos" [
+    "${homeDir}/nixos"
+    "/etc/nixos"
+  ];
+  dotfilesRoot = "${repoRoot}/home/vikram/dotfiles";
   desktopModule = if desktopProfile == "persona" then ./modules/desktop/persona else ./modules/desktop/noctalia;
 in
 {
+  _module.args = {
+    inherit dotfilesRoot;
+  };
+
   imports = [
     ./modules/packages/fish.nix
     ./modules/packages/kitty.nix

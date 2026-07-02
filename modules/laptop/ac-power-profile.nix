@@ -50,7 +50,7 @@ in
 {
   systemd.services.laptop-ac-power-profile = {
     description = "Set laptop power profile and brightness based on AC state";
-    wantedBy = [ "multi-user.target" ];
+    wantedBy = [ "multi-user.target" "graphical.target" ];
     after = [ "power-profiles-daemon.service" ];
     wants = [ "power-profiles-daemon.service" ];
     serviceConfig = {

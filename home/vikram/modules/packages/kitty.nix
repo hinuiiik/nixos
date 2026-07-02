@@ -1,12 +1,10 @@
 { config,
   pkgs,
   inputs,
+  dotfilesRoot,
   ... }:
-let
-  dotfiles = "/home/vikram/dotfiles";
-in
 {
-	xdg.configFile."kitty".source = config.lib.file.mkOutOfStoreSymlink "${dotfiles}/kitty";
+	xdg.configFile."kitty".source = config.lib.file.mkOutOfStoreSymlink "${dotfilesRoot}/kitty";
 
   # programs.kitty = {
   #   enable = true;
