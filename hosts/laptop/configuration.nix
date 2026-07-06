@@ -30,7 +30,7 @@
 
   # Configure network connections interactively with nmcli or nmtui.
   networking.networkmanager.enable = true;
-
+	boot.kernelPackages = pkgs.linuxPackages_testing;
   # Set your time zone.
   #time.timeZone = "America/New_York";
   time.timeZone = "Japan";
