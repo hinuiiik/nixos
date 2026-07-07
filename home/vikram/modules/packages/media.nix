@@ -7,5 +7,6 @@
     pkgs.nomacs
     pkgs.mpvpaper
     pkgs.moonlight-qt
+	pkgs.pinta
   ];
 }
