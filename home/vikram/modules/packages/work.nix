@@ -6,6 +6,11 @@
     pkgs.rambox
     pkgs.vscode
     pkgs.onlyoffice-desktopeditors
+	pkgs.jetbrains-toolbox
+	pkgs.nodejs
+	pkgs.pnpm
+	pkgs.mars-mips
+	pkgs.openjdk
   ];
 
   xdg.desktopEntries.digital = {
@@ -17,4 +22,13 @@
     terminal = false;
     type = "Application";
   };
+xdg.desktopEntries.mars = {
+    categories = [ "Development" "IDE" ];
+    comment = "IDE for programming in MIPS assembly language intended for educational-level use";
+    exec = "env GDK_DPI_SCALE=1.25 GTK_THEME=Adwaita:light Mars";
+    icon = "mars";
+    name = "MARS";
+    terminal = false;
+    type = "Application";
+};
 }

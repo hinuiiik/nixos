@@ -13,5 +13,6 @@
     pkgs.nwg-displays
     pkgs.nwg-look
     pkgs.kdePackages.qt6ct
+	pkgs.unrar
   ];
 }

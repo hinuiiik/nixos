@@ -8,5 +8,6 @@
     pkgs.mpvpaper
     pkgs.moonlight-qt
 	pkgs.pinta
+	pkgs.telegram-desktop
   ];
 }
