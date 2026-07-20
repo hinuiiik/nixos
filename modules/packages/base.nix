@@ -13,5 +13,6 @@
     sbctl
     unzip
     wineWow64Packages.waylandFull
+	python3
   ];
 }
