@@ -14,7 +14,7 @@ let
   #useHome = (builtins.substring 0 12 (builtins.readFile ./.useHome)) == "1";
   
   repoRoot = 
-      if (lib.trim (builtins.readFile ./.useHome)) == "0"
+      if (lib.trim (builtins.readFile ./.useHome)) == "1"
       then "${homeDir}/nixos" 
       else "/etc/nixos";
   dotfilesRoot = "${repoRoot}/home/vikram/dotfiles";
