@@ -16,6 +16,7 @@ hl.window_rule({
         class = "org.kde.dolphin"
     },
     float = true,
+	size={"(monitor_w*0.5)", "(monitor_h*0.5)"},
 })
 
 hl.window_rule({
