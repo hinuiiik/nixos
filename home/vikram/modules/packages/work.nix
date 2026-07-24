@@ -11,6 +11,7 @@
 	pkgs.pnpm
 	pkgs.mars-mips
 	pkgs.openjdk
+	pkgs.google-chrome
   ];
 
   xdg.desktopEntries.digital = {

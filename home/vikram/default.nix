@@ -34,6 +34,7 @@ in
     ./modules/packages/media.nix
     ./modules/packages/work.nix
     ./modules/packages/steam-run.nix
+    ./modules/packages/games.nix
     desktopModule
   ];
   home.username = "vikram";
