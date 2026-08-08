@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, inputs, ... }:
 
 {
   home.packages = [
@@ -11,5 +11,7 @@
 	pkgs.pinta
 	pkgs.telegram-desktop
 	pkgs.anki
+	pkgs.filezilla
+	pkgs.sirikali
   ];
 }
