@@ -32,8 +32,8 @@
   networking.networkmanager.enable = true;
 	boot.kernelPackages = pkgs.linuxPackages_testing;
   # Set your time zone.
-  #time.timeZone = "America/New_York";
-  time.timeZone = "Japan";
+  time.timeZone = "America/New_York";
+  #time.timeZone = "Japan";
 
   # Configure network proxy if necessary
   # networking.proxy.default = "http://user:password@proxy:port/";
