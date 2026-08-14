@@ -34,7 +34,7 @@
       url = "github:noctalia-dev/noctalia";
       #      inputs.nixpkgs.follows = "nixpkgs";
     };
-
+	hyprdynamicmonitors.url = "github:fiffeek/hyprdynamicmonitors";
   };
   nixConfig = {
     extra-substituters = [ "https://noctalia.cachix.org" ];
@@ -50,6 +50,7 @@
       agenix,
       lanzaboote,
       dolphin-overlay,
+	hyprdynamicmonitors,
       ...
     }@inputs:
     let
@@ -60,6 +61,7 @@
           modules = [
             { nixpkgs.overlays = [ dolphin-overlay.overlays.default ]; }
             hostModule
+		hyprdynamicmonitors.homeManagerModules.default
             agenix.nixosModules.default
             lanzaboote.nixosModules.lanzaboote
             home-manager.nixosModules.home-manager
