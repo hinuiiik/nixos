@@ -29,6 +29,7 @@ in
     ./modules/packages/fish.nix
     ./modules/packages/kitty.nix
     ./modules/desktop/common.nix
+    inputs.hyprdynamicmonitors.homeManagerModules.hyprdynamicmonitors
     ./modules/packages/core.nix
     ./modules/packages/qt.nix
     ./modules/packages/media.nix

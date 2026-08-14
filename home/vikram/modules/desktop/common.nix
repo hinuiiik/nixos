@@ -3,9 +3,9 @@
 {
   services.hyprpolkitagent.enable = true;
 
-  hyprdynamicmonitors = {
+  home.hyprdynamicmonitors = {
     enable = true;
-	configPath = ".config/hyprdynamicmonitors/config.toml";
+    configPath = ".config/hyprdynamicmonitors/config.toml";
   };
 
 }

@@ -61,7 +61,6 @@
           modules = [
             { nixpkgs.overlays = [ dolphin-overlay.overlays.default ]; }
             hostModule
-		hyprdynamicmonitors.homeManagerModules.default
             agenix.nixosModules.default
             lanzaboote.nixosModules.lanzaboote
             home-manager.nixosModules.home-manager
