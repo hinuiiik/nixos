@@ -16,6 +16,7 @@
     ../../modules/boot.nix
     ../../modules/laptop/ac-power-profile.nix
     ../../modules/security/agenix.nix
+    ../../modules/security/keyring.nix
     ../../modules/fonts.nix
     ../../modules/packages.nix
     ../../modules/users.nix
@@ -25,12 +26,14 @@
   # Use the systemd-boot EFI boot loader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
-
+  boot.blacklistedKernelModules = [ "wacom" ];
+  boot.kernelModules = [ "uinput" ];
   networking.hostName = "laptop"; # Define your hostname.
 
   # Configure network connections interactively with nmcli or nmtui.
   networking.networkmanager.enable = true;
 	boot.kernelPackages = pkgs.linuxPackages_testing;
+
   # Set your time zone.
   time.timeZone = "America/New_York";
   #time.timeZone = "Japan";
@@ -160,4 +163,17 @@
       # intel-media-sdk   # for older GPUs
     ];
   };
+
+    hardware.opentabletdriver.enable = true;
+    hardware.uinput.enable = true;
+
+#   services.udev.extraRules = ''
+#   # Wacom CTH-480
+#   KERNEL=="hidraw*", ATTRS{idVendor}=="056a", ATTRS{idProduct}=="0302", TAG+="uaccess", TAG+="udev-acl"
+#   SUBSYSTEM=="usb", ATTRS{idVendor}=="056a", ATTRS{idProduct}=="0302", TAG+="uaccess", TAG+="udev-acl"
+# 
+#   # Wacom CTL-480
+#   KERNEL=="hidraw*", ATTRS{idVendor}=="056a", ATTRS{idProduct}=="030e", TAG+="uaccess", TAG+="udev-acl"
+#   SUBSYSTEM=="usb", ATTRS{idVendor}=="056a", ATTRS{idProduct}=="030e", TAG+="uaccess", TAG+="udev-acl"
+# '';
 }

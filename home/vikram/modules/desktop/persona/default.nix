@@ -1,4 +1,10 @@
-{ pkgs, inputs, config, dotfilesRoot, ... }:
+{
+  pkgs,
+  inputs,
+  config,
+  dotfilesRoot,
+  ...
+}:
 {
   home.packages = [
     (import ./quickshell.nix { inherit pkgs inputs; })
@@ -19,4 +25,16 @@
     Type=Application
     Categories=Utility;
   '';
+
+  services.greetd = {
+    enable = true;
+
+    settings = {
+
+      default_session = {
+        command = "${pkgs.tuigreet}/bin/tuigreet --time --remember --remember-session --asterisks";
+        user = "greeter";
+      };
+    };
+  };
 }

@@ -29,13 +29,15 @@ in
     ./modules/packages/fish.nix
     ./modules/packages/kitty.nix
     ./modules/desktop/common.nix
-    inputs.hyprdynamicmonitors.homeManagerModules.hyprdynamicmonitors
+#    inputs.hyprdynamicmonitors.homeManagerModules.hyprdynamicmonitors
     ./modules/packages/core.nix
     ./modules/packages/qt.nix
     ./modules/packages/media.nix
     ./modules/packages/work.nix
     ./modules/packages/steam-run.nix
     ./modules/packages/games.nix
+	./modules/packages/defaultapps.nix
+	./modules/packages/coding.nix
     desktopModule
   ];
   home.username = "vikram";

@@ -14,5 +14,7 @@
     pkgs.nwg-look
     pkgs.kdePackages.qt6ct
 	pkgs.unrar
+	pkgs.hyprmoncfg
+	pkgs.udiskie
   ];
 }

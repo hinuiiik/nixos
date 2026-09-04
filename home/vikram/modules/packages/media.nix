@@ -13,5 +13,7 @@
 	pkgs.anki
 	pkgs.filezilla
 	pkgs.sirikali
+	pkgs.feishin
+	pkgs.calibre
   ];
 }

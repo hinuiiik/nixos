@@ -34,7 +34,11 @@
       url = "github:noctalia-dev/noctalia";
       #      inputs.nixpkgs.follows = "nixpkgs";
     };
-	hyprdynamicmonitors.url = "github:fiffeek/hyprdynamicmonitors";
+    noctalia-greeter = {
+        url = "github:noctalia-dev/noctalia-greeter";
+        inputs.nixpkgs.follows = "nixpkgs";
+    };
+#	hyprdynamicmonitors.url = "github:fiffeek/hyprdynamicmonitors";
   };
   nixConfig = {
     extra-substituters = [ "https://noctalia.cachix.org" ];
@@ -50,7 +54,7 @@
       agenix,
       lanzaboote,
       dolphin-overlay,
-	hyprdynamicmonitors,
+#	hyprdynamicmonitors,
       ...
     }@inputs:
     let

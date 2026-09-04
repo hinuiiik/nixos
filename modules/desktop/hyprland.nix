@@ -17,22 +17,22 @@
   #     };
   #   };
   # };
-  services.greetd = {
-    enable = true;
-
-    settings = {
-
-      default_session = {
-        command = "${pkgs.tuigreet}/bin/tuigreet --time --remember --remember-session";
-        user = "greeter";
-      };
-    };
-  };
+  #   services.greetd = {
+  #     enable = true;
+  #
+  #     settings = {
+  #
+  #       default_session = {
+  #         command = "${pkgs.tuigreet}/bin/tuigreet --time --remember --remember-session --asterisks";
+  #         user = "greeter";
+  #       };
+  #     };
+  #   };
   security.polkit.enable = true;
   services.dbus.enable = true;
-  environment.systemPackages = [
-    #pkgs.kitty
-  ];
+  #environment.systemPackages = [
+  #pkgs.kitty
+  #];
 
   # Wayland-friendly Electron apps
   environment.sessionVariables.NIXOS_OZONE_WL = "1";
