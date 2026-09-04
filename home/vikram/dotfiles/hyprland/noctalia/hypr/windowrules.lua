@@ -34,3 +34,40 @@ hl.window_rule({
     },
     fullscreen = true
 })
+
+-- hl.window_rule({
+-- 	name = "osu",
+--     match = {
+--         class = "^(osu!|osu!lazer|osu.exe)$"
+--     }
+--     #noanim=true,          -- Disables window opening/closing/minimize animations
+--     #blur=false,      -- Disables background blur underneath the window
+--     #rounding = 0,     -- Removes rounded corners to save GPU fragment shading
+--     #immediate = true,       -- Forces direct scanout (tearing/unbuffered page flips) for zero latency
+-- })
+
+hl.window_rule({
+    name = "osu",
+    match = {
+        class ="^(osu!|osu!lazer|osu.exe)$"
+    },
+    fullscreen = true,
+--     immediate = true,
+    rounding = 0,
+    no_blur = true,
+    no_shadow = true,
+    no_anim = true,
+})
+
+hl.window_rule({
+    name = "gamescope",
+    match = {
+        class ="gamescope"
+    },
+    fullscreen = true,
+--     immediate = true,
+--     rounding = 0,
+--     no_blur = true,
+--     no_shadow = true,
+--     no_anim = true,
+})
