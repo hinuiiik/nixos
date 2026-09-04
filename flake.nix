@@ -58,6 +58,7 @@
       ...
     }@inputs:
     let
+      lib = nixpkgs.lib;
       mkSystem =
         { hostModule, desktopProfile }:
         nixpkgs.lib.nixosSystem {
@@ -77,6 +78,13 @@
               };
               home-manager.users.vikram = import ./home/vikram;
             }
+          ]
+          ++ lib.optionals (desktopProfile == "noctalia") [
+            inputs.noctalia-greeter.nixosModules.default
+            ./modules/desktop/noctalia-greeter.nix
+          ]
+          ++ lib.optionals (desktopProfile != "noctalia") [
+            ./modules/desktop/greetd.nix
           ];
         };
     in

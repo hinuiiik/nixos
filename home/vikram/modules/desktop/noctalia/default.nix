@@ -12,7 +12,6 @@
 
   xdg.configFile."hypr".source =
     config.lib.file.mkOutOfStoreSymlink "${dotfilesRoot}/hyprland/noctalia/hypr";
-
   xdg.configFile."noctalia".source =
     config.lib.file.mkOutOfStoreSymlink "${dotfilesRoot}/hyprland/noctalia/noctalia";
 
