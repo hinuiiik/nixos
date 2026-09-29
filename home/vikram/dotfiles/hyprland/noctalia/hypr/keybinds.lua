@@ -3,8 +3,9 @@ local mainMod = "SUPER"
 local terminal    = "kitty"
 local fileManager = "dolphin"
 local menu        = "hyprlauncher"
-local browser = "zen"
+local browser = "zen-beta"
 local editor = "kate"
+local taskManager = "missioncenter"
 
 -- hl.bind(
 --     mainMod .. " + A",
@@ -15,6 +16,7 @@ hl.bind(mainMod .. " + T", hl.dsp.exec_cmd(terminal))
 hl.bind(mainMod .. " + B", hl.dsp.exec_cmd(browser))
 hl.bind(mainMod .. " + C", hl.dsp.exec_cmd(editor))
 hl.bind(mainMod .. " + E", hl.dsp.exec_cmd(fileManager))
+hl.bind(mainMod .. " + Escape", hl.dsp.exec_cmd(taskManager))
 local closeWindowBind = hl.bind(mainMod .. " + Q", hl.dsp.window.close())
 hl.bind(mainMod .. " + F", hl.dsp.window.fullscreen("maximized", "toggle"))
 hl.bind(mainMod .. " + W", hl.dsp.window.float({ action = "toggle" }))

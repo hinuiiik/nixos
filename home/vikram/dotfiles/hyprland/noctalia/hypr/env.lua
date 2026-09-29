@@ -11,3 +11,4 @@ hl.config({
 })
 
 hl.env("GDK_SCALE", "1.25")
+hl.env("AQ_NO_MODIFIERS", "1")

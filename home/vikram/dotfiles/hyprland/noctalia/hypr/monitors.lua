@@ -5,6 +5,7 @@ hl.monitor({
   mode = "2560x1440@165.00",
   position = "5120x0",
   scale = 1.25,
+  vrr = 1,
   sdr_min_luminance = 0.2,
   sdr_max_luminance = 80,
 })

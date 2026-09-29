@@ -71,3 +71,13 @@ hl.window_rule({
 --     no_shadow = true,
 --     no_anim = true,
 })
+
+hl.window_rule({
+	name = "jetbrains-toolbox",
+	match = {
+		class="jetbrains-toolbox"	
+	},
+	float = true,
+	center = true,
+	fullscreen = true,
+})
