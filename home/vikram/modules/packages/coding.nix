@@ -2,7 +2,7 @@
 
 {
   home.packages = [
-	pkgs.python311
+	pkgs.python312
 	pkgs.texliveFull
 	pkgs.cargo
 	pkgs.rustc
@@ -18,4 +18,9 @@
 	pkgs.pango
 	pkgs.at-spi2-core
   ];
+
+ programs.direnv = {
+  enable = true;
+  nix-direnv.enable = true;
+};
 }

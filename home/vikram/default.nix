@@ -38,6 +38,7 @@ in
     ./modules/packages/games.nix
 	./modules/packages/defaultapps.nix
 	./modules/packages/coding.nix
+	./modules/packages/nur.nix
     desktopModule
   ];
   home.username = "vikram";

@@ -13,7 +13,7 @@
     pkiBundle = "/var/lib/sbctl";
     settings.reboot-for-bitlocker = true;
     autoGenerateKeys.enable = true;
-	configurationLimit = 8;
+	configurationLimit = 4;
     autoEnrollKeys = {
     enable = true;
     autoReboot = true;

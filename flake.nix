@@ -4,8 +4,9 @@
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
     zen-browser = {
-      url = "github:youwen5/zen-browser-flake";
+      url = "github:0xc000022070/zen-browser-flake";
       inputs.nixpkgs.follows = "nixpkgs";
+      inputs.home-manager.follows = "home-manager";
     };
     dolphin-overlay = {
       url = "github:MattiDragon/dolphin-overlay";
@@ -38,7 +39,10 @@
         url = "github:noctalia-dev/noctalia-greeter";
         inputs.nixpkgs.follows = "nixpkgs";
     };
-#	hyprdynamicmonitors.url = "github:fiffeek/hyprdynamicmonitors";
+kotonoha = {
+  url = "github:locez/kotonoha";
+  inputs.nixpkgs.follows = "nixpkgs";
+};
   };
   nixConfig = {
     extra-substituters = [ "https://noctalia.cachix.org" ];
@@ -54,6 +58,7 @@
       agenix,
       lanzaboote,
       dolphin-overlay,
+	#nur-unstable-code
 #	hyprdynamicmonitors,
       ...
     }@inputs:

@@ -25,8 +25,8 @@
     "sd_mod"
   ];
   boot.initrd.kernelModules = [ ];
-  boot.kernelModules = [ "kvm-intel" ];
-  boot.extraModulePackages = [ ];
+  #boot.kernelModules = [ "kvm-intel" "ddcci_backlight" ];
+  #boot.extraModulePackages = [ config.boot.kernelPackages.ddcci-driver ];
 
   fileSystems."/" = {
     device = "/dev/mapper/cryptroot";

@@ -12,6 +12,7 @@
 	pkgs.mars-mips
 	pkgs.openjdk
 	pkgs.google-chrome
+	pkgs.slack
   ];
 
   xdg.desktopEntries.digital = {

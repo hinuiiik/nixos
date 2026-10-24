@@ -49,15 +49,17 @@ let
 in
 {
   systemd.services.laptop-ac-power-profile = {
-    description = "Set laptop power profile and brightness based on AC state";
-    wantedBy = [ "multi-user.target" "graphical.target" ];
-    after = [ "power-profiles-daemon.service" ];
-    wants = [ "power-profiles-daemon.service" ];
-    serviceConfig = {
-      Type = "oneshot";
-      ExecStart = "${applyPowerState}/bin/apply-ac-power-state";
-    };
+  description = "Set laptop power profile and brightness based on AC state";
+
+  #wantedBy = [ "multi-user.target" ];
+  requires = [ "power-profiles-daemon.service" ];
+  after = [ "power-profiles-daemon.service" ];
+
+  serviceConfig = {
+    Type = "oneshot";
+    ExecStart = "${applyPowerState}/bin/apply-ac-power-state";
   };
+};
 
   services.udev.extraRules = ''
     ACTION=="change", SUBSYSTEM=="power_supply", ATTR{type}=="Mains", TAG+="systemd", ENV{SYSTEMD_WANTS}+="laptop-ac-power-profile.service"

@@ -2,6 +2,6 @@
 
 {
   home.packages = [
-	inputs.nur-unstable-code.packages.${pkgs.system}.wshowlyrics
+#	inputs.nur-unstable-code.packages.${pkgs.stdenv.hostPlatform.system}.wshowlyrics-unstable
   ];
 }

@@ -27,12 +27,13 @@
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
   boot.blacklistedKernelModules = [ "wacom" ];
-  boot.kernelModules = [ "uinput" ];
   networking.hostName = "laptop"; # Define your hostname.
+  boot.kernelModules = [ "uinput" "kvm-intel" ];
+  boot.extraModulePackages = [ ];
 
   # Configure network connections interactively with nmcli or nmtui.
   networking.networkmanager.enable = true;
-	boot.kernelPackages = pkgs.linuxPackages_testing;
+  boot.kernelPackages = pkgs.linuxPackages_zen;
 
   # Set your time zone.
   time.timeZone = "America/New_York";
@@ -166,7 +167,8 @@
 
     hardware.opentabletdriver.enable = true;
     hardware.uinput.enable = true;
-
+    virtualisation.docker.enable = true;
+    virtualisation.docker.storageDriver = "btrfs";
 #   services.udev.extraRules = ''
 #   # Wacom CTH-480
 #   KERNEL=="hidraw*", ATTRS{idVendor}=="056a", ATTRS{idProduct}=="0302", TAG+="uaccess", TAG+="udev-acl"
@@ -176,4 +178,6 @@
 #   KERNEL=="hidraw*", ATTRS{idVendor}=="056a", ATTRS{idProduct}=="030e", TAG+="uaccess", TAG+="udev-acl"
 #   SUBSYSTEM=="usb", ATTRS{idVendor}=="056a", ATTRS{idProduct}=="030e", TAG+="uaccess", TAG+="udev-acl"
 # '';
+
+  #systemd.services.systemd-pcrlock-secureboot-authority.enable = false;    
 }

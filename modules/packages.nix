@@ -4,5 +4,6 @@
     ./packages/kde-support.nix
     ./packages/services.nix
     ./packages/gaming.nix
+    ./packages/udev.nix
   ];
 }
