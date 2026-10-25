@@ -5,5 +5,6 @@
     ./packages/services.nix
     ./packages/gaming.nix
     ./packages/udev.nix
+    ./packages/fonts.nix
   ];
 }
