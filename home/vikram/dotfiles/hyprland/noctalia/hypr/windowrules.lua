@@ -64,7 +64,38 @@ hl.window_rule({
     match = {
         class ="gamescope"
     },
-    fullscreen = true,
+	fullscreen = true,
+--	floating = true,
+--     immediate = true,
+--     rounding = 0,
+--     no_blur = true,
+--     no_shadow = true,
+--     no_anim = true,
+})
+
+hl.window_rule({
+    name = "danganronpa",
+    match = {
+        title ="Danganronpa : Trigger Happy Havoc"
+    },
+	fullscreen = false,
+	float = true,
+	size = { 1280, 720 },
+--     immediate = true,
+--     rounding = 0,
+--     no_blur = true,
+--     no_shadow = true,
+--     no_anim = true,
+})
+
+hl.window_rule({
+    name = "2danganronpa",
+    match = {
+        class ="steam_app_413410"
+    },
+	fullscreen = false,
+	float = true,
+	size = { 1280, 720 },
 --     immediate = true,
 --     rounding = 0,
 --     no_blur = true,
