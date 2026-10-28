@@ -7,7 +7,7 @@
 
 {
   boot.loader.systemd-boot.enable = lib.mkForce false;
-  boot.initrd.systemd.enable = true;
+  #boot.initrd.systemd.enable = true;
   boot.lanzaboote = {
     enable = true;
     pkiBundle = "/var/lib/sbctl";

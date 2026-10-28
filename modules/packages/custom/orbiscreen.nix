@@ -3,25 +3,27 @@
 , rustPlatform
 , pkg-config
 , wrapGAppsHook3
-, gtk3
+, gtk4
 , webkitgtk_4_1
 , gst_all_1
 , libevdev
 , libxkbcommon
+, graphene
+, libadwaita
 }:
 
 rustPlatform.buildRustPackage rec {
   pname = "orbiscreen";
-  version = "0.37.2";
+  version = "0.39.1";
 
   src = fetchFromGitHub {
     owner = "shadow-x78";
     repo = "orbiscreen";
     rev = "v${version}";
-    hash = "sha256-jJBW5aLjpfy7mIGBObtKbwRnXrTUi365VVl60l2Jzvs=";
+    hash = "sha256-nFLKJdNjg2l81oVA7DdvyCZTwowovefRDnSwT56qY3k=";
   };
 
-  cargoHash = "sha256-2vL6wBkUMq9q+H1M/OBA379baNIN66cb5F2wZXkOEaY=";
+  cargoHash = "sha256-YL8Xmfo6F19T0gGfhGp0AhQZKRts/19mp5d2DvkWsBA=";
 
   nativeBuildInputs = [
     pkg-config
@@ -29,7 +31,7 @@ rustPlatform.buildRustPackage rec {
   ];
 
   buildInputs = [
-    gtk3
+    gtk4
     webkitgtk_4_1
     gst_all_1.gstreamer
     gst_all_1.gst-plugins-base
@@ -38,6 +40,8 @@ rustPlatform.buildRustPackage rec {
     gst_all_1.gst-plugins-ugly
     libevdev
     libxkbcommon
+    graphene
+    libadwaita
   ];
 
   cargoBuildFlags = [ "--workspace" ];
