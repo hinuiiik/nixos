@@ -64,16 +64,23 @@ kotonoha = {
       ...
     }@inputs:
     let
-      lib = nixpkgs.lib;
+      lib = nixpkgs.lib;THe boot
       mkSystem =
-        { hostModule, desktopProfile }:
+        {
+          hostModule,
+          desktopProfile,
+          username ? "vikram",
+          homeModule ? ./home/vikram,
+          secureBoot ? true,
+        }:
         nixpkgs.lib.nixosSystem {
           specialArgs = { inherit inputs; };
           modules = [
             { nixpkgs.overlays = [ dolphin-overlay.overlays.default ]; }
             hostModule
+            ./modules/packages.nix
+            ./modules/fonts.nix
             agenix.nixosModules.default
-            lanzaboote.nixosModules.lanzaboote
             home-manager.nixosModules.home-manager
             inputs.vscode-server.nixosModules.default
             {
@@ -82,19 +89,26 @@ kotonoha = {
               home-manager.extraSpecialArgs = {
                 inherit inputs desktopProfile;
               };
-              home-manager.users.vikram = import ./home/vikram;
+              home-manager.users.${username} = import homeModule;
             }
+          ]
+          ++ lib.optionals secureBoot [
+            lanzaboote.nixosModules.lanzaboote
+            ./modules/boot.nix
           ]
           ++ lib.optionals (desktopProfile == "noctalia") [
             inputs.noctalia-greeter.nixosModules.default
             ./modules/desktop/noctalia-greeter.nix
           ]
-          ++ lib.optionals (desktopProfile != "noctalia") [
+          ++ lib.optionals (desktopProfile == "plasma") [
+            ./modules/desktop/plasma.nix
+          ]
+          ++ lib.optionals (desktopProfile != "noctalia" && desktopProfile != "plasma") [
             ./modules/desktop/greetd.nix
           ];
         };
     in
-    {
+    ({
       nixosConfigurations.vm = mkSystem {
         hostModule = ./hosts/vm/configuration.nix;
         desktopProfile = "persona";
@@ -103,5 +117,13 @@ kotonoha = {
         hostModule = ./hosts/laptop/configuration.nix;
         desktopProfile = "noctalia";
       };
-    };
+    } // lib.optionalAttrs (builtins.pathExists ./hosts/krish-india-server/configuration.nix) {
+      nixosConfigurations.krish-india-server = mkSystem {
+        hostModule = ./hosts/krish-india-server/configuration.nix;
+        desktopProfile = "plasma";
+        username = "krish";
+        homeModule = ./home/krish;
+        secureBoot = false;
+      };
+    });
 }

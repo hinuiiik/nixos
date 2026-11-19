@@ -13,10 +13,7 @@
   imports = [
     # Include the results of the hardware scan.
     ./hardware-configuration.nix
-    ../../modules/boot.nix
-    ../../modules/security/agenix.nix
-    ../../modules/fonts.nix
-    ../../modules/packages.nix
+z    ../../modules/security/agenix.nix
     ../../modules/users.nix
     ../../modules/desktop/hyprland.nix   
   ];
@@ -146,4 +143,3 @@
 
 	nixpkgs.config.allowUnfree = true;
 }
-
