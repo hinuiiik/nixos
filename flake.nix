@@ -1,4 +1,4 @@
-{
+	{
   description = "A simple NixOS flake";
 
   inputs = {
@@ -76,7 +76,7 @@ kotonoha = {
         nixpkgs.lib.nixosSystem {
           specialArgs = { inherit inputs; };
           modules = [
-            { nixpkgs.overlays = [ dolphin-overlay.overlays.default ]; }
+             #{ nixpkgs.overlays = [ dolphin-overlay.overlays.default ]; }
             hostModule
             ./modules/packages.nix
             ./modules/fonts.nix
