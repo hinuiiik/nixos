@@ -64,7 +64,7 @@ kotonoha = {
       ...
     }@inputs:
     let
-      lib = nixpkgs.lib;THe boot
+      lib = nixpkgs.lib;
       mkSystem =
         {
           hostModule,
