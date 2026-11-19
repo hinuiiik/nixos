@@ -1,7 +1,7 @@
 local mainMod = "SUPER"
 
 local terminal    = "kitty"
-local fileManager = "dolphin"
+local fileManager = "hyprfm"
 local menu        = "hyprlauncher"
 local browser = "zen-beta"
 local editor = "kate"
@@ -18,7 +18,7 @@ hl.bind(mainMod .. " + C", hl.dsp.exec_cmd(editor))
 hl.bind(mainMod .. " + E", hl.dsp.exec_cmd(fileManager))
 hl.bind(mainMod .. " + Escape", hl.dsp.exec_cmd(taskManager))
 local closeWindowBind = hl.bind(mainMod .. " + Q", hl.dsp.window.close())
-hl.bind(mainMod .. " + F", hl.dsp.window.fullscreen("maximized", "toggle"))
+hl.bind(mainMod .. " + F", hl.dsp.window.fullscreen({ action = "toggle" }))
 hl.bind(mainMod .. " + W", hl.dsp.window.float({ action = "toggle" }))
 
 
@@ -83,7 +83,7 @@ hl.bind(mainMod .. " + PERIOD", hl.dsp.exec_cmd("hyprctl switchxkblayout current
 
 
 -- Gaming Mode
-hl.bind("SUPER + G", function ()
+hl.bind(mainMod .. " + G", function ()
     local game_mode = (hl.get_config("animations.enabled") == false)
 
     if game_mode then

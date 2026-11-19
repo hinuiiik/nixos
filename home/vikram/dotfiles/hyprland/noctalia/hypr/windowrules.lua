@@ -20,6 +20,15 @@ hl.window_rule({
 })
 
 hl.window_rule({
+    name = "HyperFM",
+    match = {
+        class = "hyprfm"
+    },
+    float = true,
+        size={"(monitor_w*0.5)", "(monitor_h*0.5)"},
+})
+
+hl.window_rule({
     name = "Ark",
     match = {
         class = "org.kde.ark"
