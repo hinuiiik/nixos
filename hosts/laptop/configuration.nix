@@ -152,6 +152,7 @@
 
   #	services.udisks2.enable = true;
   nixpkgs.config.allowUnfree = true;
+  nixpkgs.config.android_sdk.accept_license = true;
   hardware.graphics = {
     enable = true;
 	enable32Bit = true;

@@ -23,19 +23,19 @@ let
 in
 {
   environment.systemPackages = [
-	orbiscreen
+#	orbiscreen
   ];
-  users.groups.orbiscreen = {};
-  users.users.vikram.extraGroups = [
-  "orbiscreen"
-];  
-services.udev.packages = [ orbiscreen ];
-  services.udev.extraRules = ''
-  SUBSYSTEM=="usb", ATTR{idVendor}=="18d1", ATTR{idProduct}=="2d00", GROUP="orbiscreen", MODE="0660"
-  SUBSYSTEM=="usb", ATTR{idVendor}=="18d1", ATTR{idProduct}=="2d01", GROUP="orbiscreen", MODE="0660"
-  SUBSYSTEM=="usb", ATTR{idVendor}=="18d1", ATTR{idProduct}=="2d04", GROUP="orbiscreen", MODE="0660"
-  SUBSYSTEM=="usb", ATTR{idVendor}=="18d1", ATTR{idProduct}=="2d05", GROUP="orbiscreen", MODE="0660"
-'';
+ # users.groups.orbiscreen = {};
+ # users.users.vikram.extraGroups = [
+ # "orbiscreen"
+ #];  
+#services.udev.packages = [ orbiscreen ];
+#  services.udev.extraRules = ''
+#  SUBSYSTEM=="usb", ATTR{idVendor}=="18d1", ATTR{idProduct}=="2d00", GROUP="orbiscreen", MODE="0660"
+#  SUBSYSTEM=="usb", ATTR{idVendor}=="18d1", ATTR{idProduct}=="2d01", GROUP="orbiscreen", MODE="0660"
+#  SUBSYSTEM=="usb", ATTR{idVendor}=="18d1", ATTR{idProduct}=="2d04", GROUP="orbiscreen", MODE="0660"
+#  SUBSYSTEM=="usb", ATTR{idVendor}=="18d1", ATTR{idProduct}=="2d05", GROUP="orbiscreen", MODE="0660"
+#'';
 
  networking.firewall.allowedTCPPorts = [ 8788 ];
 networking.firewall.allowedUDPPorts = [ 8789 5353 ];

@@ -41,5 +41,15 @@
   xdg.portal.enable = true;
   xdg.portal.extraPortals = [
     pkgs.xdg-desktop-portal-hyprland
+    pkgs.kdePackages.xdg-desktop-portal-kde
   ];
+  xdg.portal.config = {
+    hyprland = {
+      default = [
+        "hyprland"
+        "gtk"
+      ];
+      "org.freedesktop.impl.portal.FileChooser" = [ "kde" ];
+    };
+  };
 }

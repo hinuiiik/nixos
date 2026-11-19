@@ -2,10 +2,10 @@
 
 {
   home.packages = [
-    pkgs.digital
+    #pkgs.digital
     pkgs.rambox
     pkgs.vscode
-    pkgs.onlyoffice-desktopeditors
+    pkgs.euro-office-desktopeditors
     pkgs.jetbrains-toolbox
     pkgs.nodejs
     pkgs.pnpm
@@ -15,6 +15,7 @@
     pkgs.slack
     pkgs.protonmail-desktop
     pkgs.thunderbird
+ #   pkgs.androidsdk
   ];
 
   xdg.desktopEntries.digital = {
